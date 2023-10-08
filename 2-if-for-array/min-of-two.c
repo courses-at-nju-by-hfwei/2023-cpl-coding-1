@@ -11,6 +11,19 @@ int main(void) {
   scanf("%d%d", &a, &b);
 
   // TODO: calculate the minimum of a and b
+  int min = 0;
+
+  // code style
+  // if (a < b) {
+  //   min = a;
+  // } else {
+  //   min = b;
+  // }
+
+  // conditional operator
+  min = a > b ? b : a;
+
+  printf("min(%d, %d) = %d\n", a, b, min);
 
   return 0;
 }
