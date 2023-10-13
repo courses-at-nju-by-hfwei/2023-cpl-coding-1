@@ -22,6 +22,8 @@ int main(void) {
    * TODO: Input&Output redirection
    *   See https://stackoverflow.com/a/11788475/1833118
    */
+  // input failure (EOF; end of file (-1))
+  // numbers of matched items
   int len = -1;
   while (scanf("%d", &numbers[++len]) != EOF);
 
@@ -31,6 +33,28 @@ int main(void) {
   printf("\n");
 
   // TODO: selection sort
+  for (int i = 0; i < len; i++) {
+    // find the minimum in numbers[i .. n-1]
+    int min = numbers[i];
+    int min_index = i;
+
+    for (int j = i + 1; j < len; j++) {
+      if (numbers[j] < min) {
+        min = numbers[j];
+        min_index = j;
+      }
+    }
+
+    // swap numbers[i] and numbers[min_index]
+    int temp = numbers[min_index];
+    numbers[min_index] = numbers[i];
+    numbers[i] = temp;
+  }
+
+  for (int i = 0; i < len; i++) {
+    printf("%d ", numbers[i]);
+  }
+  printf("\n");
 
   return 0;
 }
