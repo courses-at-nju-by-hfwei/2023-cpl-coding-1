@@ -9,6 +9,19 @@
 
 #define SIZE 6
 
+// int a[5]; a[3] address of the first element of the array + 3 * (sizeof int)
+// int a[]
+// -----
+// int a[5][5]
+// a[1][2]: address of the first element of the array
+// + 1 * (size of a row)  [col * (size of int)]
+// + 2 * (size of int)
+// -----
+// -----
+// -----
+// -----
+// -----
+
 void ExtendBoard(const int origin_board[][SIZE],
                  int extended_board[][SIZE + 2]);
 void PrintExtendedBoard(const int extended_board[][SIZE + 2]);
