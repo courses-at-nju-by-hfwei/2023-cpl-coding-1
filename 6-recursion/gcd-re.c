@@ -24,6 +24,12 @@ int main() {
 }
 
 // gcd(130, 124) = 2
+// gcd(130, 124) = gcd(124, 6) = gcd(6, 4) = gcd(4, 2) = gcd(2, 0) = 2
 // gcd(414, 662) = 2
 int GCD(int a, int b) {
+  if (b == 0) {
+    return a;
+  }
+
+  return GCD(b, a % b);
 }
