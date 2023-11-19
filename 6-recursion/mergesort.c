@@ -15,7 +15,7 @@
 void MergeSort(int nums[], int left, int right);
 
 /**
- * @brief merge nums[left .. mid - 1] and nums[mid .. right]
+ * @brief merge nums[left .. mid] and nums[mid + 1 .. right]
  * @param nums
  * @param left
  * @param mid
