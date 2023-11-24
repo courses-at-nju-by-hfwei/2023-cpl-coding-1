@@ -11,36 +11,64 @@
 
 void SelectionSort(int arr[], int len);
 void WrongSwap(int left, int right);
+void Swap(int *left, int *right);
 int GetMinIndex(const int arr[], int begin, int end);
 void Print(const int arr[], int len);
 
 int main(void) {
-  int numbers[LEN] = {15, 78, 23, 8, 50};
+  int len = 0;
+  scanf("%d", &len);
+  // (1) stdlib.h
+  // (2) return type: (void *)
+  // (3) type
+  // (4) sizeof(int)
+  // (5) size_t: unsigned long/long long int
+  int *numbers = malloc(len * sizeof(*numbers));
+  // int *numbers = malloc(-1);
+  // NULL: null pointer ((void *) 0)
+  if (numbers == NULL) {
+    return 0;
+  }
 
-  Print(numbers, LEN);
-  SelectionSort(numbers, LEN);
-  Print(numbers, LEN);
+  for (int i = 0; i < len; i++) {
+    scanf("%d", &numbers[i]);
+  }
 
-  return 0;
+  // int numbers[LEN] = {15, 78, 23, 8, 50};
+
+  Print(numbers, len);
+  // (): function-call operator
+  // SelectionSort(numbers, LEN);
+  SelectionSort(&numbers[0], len);
+  Print(numbers, len);
+
+  free(numbers);
+
 }
 
 // arr: the (copy of the) address of the first element of the `numbers` array
+// int *arr <=> int arr[]
+// []: subscript operator
 void SelectionSort(int arr[], int len) {
   for (int i = 0; i < len; i++) {
     int min_index = GetMinIndex(arr, i, len);
 
     // ERROR: WrongSwap(arr[i], arr[min_index]);
-    int temp = arr[i];
-    arr[i] = arr[min_index];
-    arr[min_index] = temp;
+    // int temp = arr[i];
+    // arr[i] = arr[min_index];
+    // arr[min_index] = temp;
+    // &arr[i] <=> &(*(arr + i)) <=> arr + i
+    Swap(arr + i, arr + min_index);
   }
 }
 
+// const int arr[] <=> const int *arr
 int GetMinIndex(const int arr[], int begin, int end) {
   int min = arr[begin];
   int min_index = begin;
 
   for (int i = begin + 1; i < end; ++i) {
+    // arr[i] <=> *(arr + i) <=> *(i + arr) <=> i[arr]
     if (arr[i] < min) {
       min = arr[i];
       min_index = i;
@@ -54,6 +82,12 @@ void WrongSwap(int left, int right) {
   int temp = left;
   left = right;
   right = temp;
+}
+
+void Swap(int *left, int *right) {
+  int temp = *left;
+  *left = *right;
+  *right = temp;
 }
 
 void Print(const int arr[], int len) {
