@@ -14,7 +14,6 @@ int main() {
   int radius = 100;
 
   printf("radius = %d\n", radius);
-  printf("&radius = %p\n", &radius);
 
   radius = 200;
   double circumference = 2 * PI * radius;
