@@ -15,6 +15,7 @@ typedef char *sds;
 struct sdshdr {
   int len;
   int free;
+  // flexible array member; zero-length array member
   char buf[];
 };
 
